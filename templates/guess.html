@@ -1,0 +1,12 @@
+<h2>1–100 Тоо таа</h2>
+<input id="n"><button onclick="send()">Таах</button>
+<p id="out"></p>
+
+<script>
+async function send(){
+ let v=document.getElementById("n").value;
+ let r=await fetch("/api/guess",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({guess:v})});
+ let d=await r.json();
+ document.getElementById("out").innerText=d.msg;
+}
+</script>

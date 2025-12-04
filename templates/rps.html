@@ -1,0 +1,13 @@
+<h2>Хайч Чулуу Даавуу</h2>
+<button onclick="play('rock')">🪨</button>
+<button onclick="play('paper')">📄</button>
+<button onclick="play('scissors')">✂️</button>
+<p id="out"></p>
+
+<script>
+async function play(c){
+ let r=await fetch("/api/rps",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({choice:c})});
+ let d=await r.json();
+ out.innerText="AI: "+d.ai+" | "+d.result;
+}
+</script>
